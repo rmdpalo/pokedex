@@ -1,1 +1,3 @@
 # pokedex
+
+a pokedex app.

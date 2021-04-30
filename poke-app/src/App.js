@@ -1,16 +1,19 @@
-import styled from 'styled-components'
-
-const Title = styled.h1`
-  color: red;
-  font-size: 30px;
-`
+import {
+  AppWrapper,
+  ContainerWrapper,
+  ScreenWrapper,
+} from './App.modulecss'
 
 const App = () => {
   return (
-    <div className="App">
-      <Title>Hello World</Title>
-    </div>
-  );
+    <AppWrapper>
+      <ContainerWrapper>
+        <ScreenWrapper>
+        <h1>Pokémon</h1>
+        </ScreenWrapper>
+      </ContainerWrapper>
+    </AppWrapper>
+  )
 }
 
 export default App;

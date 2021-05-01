@@ -16,15 +16,17 @@ import {
 
 const App = () => {
   const [pokemon, setPokemon] = useState("")
-  
+  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif` 
+
   const handleClick = () => {
     //fetch data from api (hardcoded for now)
-    fetch('https://pokeapi.co/api/v2/pokemon/1/')
+    fetch('https://pokeapi.co/api/v2/pokemon/70/')
     //take the response and convert to JSON
     .then(response => response.json())
     //console log for now (eventually would set to state)
     .then(data => setPokemon(data.name))
   }
+
 
   return (
     <AppWrapper>
@@ -43,7 +45,14 @@ const App = () => {
         <AssetWrapper>
           <DittoButton>:)</DittoButton>
           <ScreenWrapper>
-            {pokemon === "" ? (<h1>Pokémon</h1>) : (<h1>{pokemon}</h1>)}
+            {pokemon === "" ? (
+              <h1>Pokémon</h1>
+            ) : (
+              <div>
+                <h1>{pokemon}</h1>
+                <img src={gifURL} />
+              </div>
+            )}
           </ScreenWrapper>
           <ScrollWrapper>
             <ScrollUpButton></ScrollUpButton>

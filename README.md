@@ -1,5 +1,8 @@
 # pokedex
 A simple pokedex app that utilizes PokeAPI to allow users to search for pokemon using their name or their pokemon number.
+
+** Disclaimer **
+Current app only works up to generation VII (i.e. id# 1-809), you can enter Pokémon names and id's after generation VII but it's not guaranteed to work with our app. 
 ## Tech Stack:
 - React (both class and functional components)
 - PokeAPI
@@ -23,6 +26,7 @@ A simple pokedex app that utilizes PokeAPI to allow users to search for pokemon 
 - Scroll wheel on the right moves us sequentially through pokemon
 - Up and down arrows are clickable
 - (initialize to state? currentNum? Other option is to just set the # within the pokemon object)
+- Ability to loop through Pokémon id# 1-809
 - Icebox: mousewheel event? up and down arrow keys?
 
 ### Pokemon display component:

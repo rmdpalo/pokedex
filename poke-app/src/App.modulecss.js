@@ -67,7 +67,7 @@ export const ScrollWrapper = styled.div`
   flex-direction: column;
 `
 
-export const ScrollUpButton = styled.div`
+export const ScrollUpButton = styled.button`
   height: 110px;
   width: 50px;
   border: 10px solid #707070;
@@ -76,7 +76,7 @@ export const ScrollUpButton = styled.div`
   background-color: #ffca62;
 `
 
-export const ScrollDownButton = styled.div`
+export const ScrollDownButton = styled.button`
   height: 110px;
   width: 50px;
   border: 10px solid #707070;

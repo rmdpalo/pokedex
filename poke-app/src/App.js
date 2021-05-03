@@ -17,10 +17,16 @@ import {
 const App = () => {
   //pokemon in state
   const [pokemon, setPokemon] = useState("")
-  // pokemon id
+  //pokemon id
   const [pokemonNum, setPokemonNum] = useState("")
   //user's input in searchbar
   const [search, setSearch] = useState("")
+  //pokemon characteristic, endpoint is an array of objects
+  const [types, setTypes] = useState([])
+  //pokemon height
+  const [height, setHeight] = useState("")
+  //pokemon weight
+  const [weight, setWeight] = useState("")
   //url for the sprite to display 
   const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
   
@@ -40,6 +46,9 @@ const App = () => {
     .then(data => {
       setPokemon(data.name)
       setPokemonNum(data.id)
+      setTypes(data.types)
+      setHeight(data.height)
+      setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
     
@@ -61,9 +70,12 @@ const App = () => {
     .then(data => {
       setPokemon(data.name)
       setPokemonNum(data.id)
+      setTypes(data.types)
+      setHeight(data.height)
+      setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or # from 1-809"))
-    
+
     e.preventDefault()
   }
 
@@ -94,6 +106,16 @@ const App = () => {
     setPokemonNum(randomNum)
   }
 
+  //capitalize function
+  const capitalize = (str) => {
+    //take the first letter of string and toUpperCase it
+    let firstChar = str.charAt(0).toUpperCase()
+    //take the rest of the string and concatenate first char onto it
+    let capitalizedStr = firstChar + str.slice(1, str.length)
+    //return new str
+    return capitalizedStr
+  }
+
   return (
     <AppWrapper>
       <ContainerWrapper>
@@ -121,8 +143,11 @@ const App = () => {
               <h1>Pokémon</h1>
             ) : (
               <div>
-                <h1>{pokemonNum} {pokemon}</h1>
+                <h1>{pokemonNum} {capitalize(pokemon)}</h1>
                 <img src={gifURL} alt={`${pokemon} sprite`} />
+                <p>Height: {height/10} m</p>
+                <p>Weight: {weight/10} kg</p>
+                <p>{types.map(value => capitalize(value.type.name) + " ")}</p>
               </div>
             )}
           </ScreenWrapper>

@@ -21,14 +21,15 @@ const App = () => {
   const [pokemonNum, setPokemonNum] = useState("")
   //user's input in searchbar
   const [search, setSearch] = useState("")
-  //url for the sprite to display
-  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif` 
-
+  //url for the sprite to display 
+  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
+  
   useEffect (() => {
+    console.log("hello")
     //watching for changes in pokemonNum
     //if pokemonNum changes, run fetch call but use pokemonNum (instead of lowerCaseSearch)
     const fetchURL = `https://pokeapi.co/api/v2/pokemon/${pokemonNum}/`
-    if (search === "") {
+    if (search === "" && pokemonNum === "") {
       return
     }
     //fetch data from api (hardcoded for now)
@@ -41,7 +42,7 @@ const App = () => {
       setPokemonNum(data.id)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
-
+    
   }, [pokemonNum])
 
   //TODO: DRY the useEffect to cover both name and number changes
@@ -86,6 +87,13 @@ const App = () => {
     }
   }
 
+  //Ditto button functionality
+  const randomizePokemon = () => {
+    //generate a random number between 1-809
+    let randomNum = Math.floor(Math.random() * 809) + 1
+    setPokemonNum(randomNum)
+  }
+
   return (
     <AppWrapper>
       <ContainerWrapper>
@@ -105,9 +113,11 @@ const App = () => {
           </form>
         </SearchBarWrapper>
         <AssetWrapper>
-          <DittoButton>:)</DittoButton>
+          <DittoButton
+            onClick={randomizePokemon}
+          >:)</DittoButton>
           <ScreenWrapper>
-            {pokemon === "" ? (
+            {pokemonNum === "" ? (
               <h1>Pokémon</h1>
             ) : (
               <div>

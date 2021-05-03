@@ -106,6 +106,16 @@ const App = () => {
     setPokemonNum(randomNum)
   }
 
+  //capitalize function
+  const capitalize = (str) => {
+    //take the first letter of string and toUpperCase it
+    let firstChar = str.charAt(0).toUpperCase()
+    //take the rest of the string and concatenate first char onto it
+    let capitalizedStr = firstChar + str.slice(1, str.length)
+    //return new str
+    return capitalizedStr
+  }
+
   return (
     <AppWrapper>
       <ContainerWrapper>
@@ -133,11 +143,11 @@ const App = () => {
               <h1>Pokémon</h1>
             ) : (
               <div>
-                <h1>{pokemonNum} {pokemon}</h1>
+                <h1>{pokemonNum} {capitalize(pokemon)}</h1>
                 <img src={gifURL} alt={`${pokemon} sprite`} />
                 <p>Height: {height/10} m</p>
                 <p>Weight: {weight/10} kg</p>
-                <p>{types.map(value => value.type.name + " ")}</p>
+                <p>{types.map(value => capitalize(value.type.name) + " ")}</p>
               </div>
             )}
           </ScreenWrapper>

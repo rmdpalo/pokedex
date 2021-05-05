@@ -28,7 +28,8 @@ const App = () => {
   //pokemon weight
   const [weight, setWeight] = useState("")
   //url for the sprite to display 
-  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
+  const [gifName, setGifName] = useState("")
+  const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
   
   useEffect (() => {
     console.log("hello")
@@ -51,6 +52,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
+
+    removeDash()
     
   }, [pokemonNum])
 
@@ -75,6 +78,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or # from 1-809"))
+
+    removeDash()
 
     e.preventDefault()
   }
@@ -114,6 +119,15 @@ const App = () => {
     let capitalizedStr = firstChar + str.slice(1, str.length)
     //return new str
     return capitalizedStr
+  }
+
+  //TODO: does not work with pokemon #772 "type-null"
+  const removeDash = () => {
+    if(pokemon.includes("-")){
+      setGifName(pokemon.split("-").join("")) 
+    } else {
+      setGifName(pokemon)
+    }
   }
 
   return (

@@ -12,6 +12,8 @@ import {
   ScrollDownButton,
   ScrollWrapper,
 } from './App.modulecss'
+import Sound from 'react-sound'
+import LittleRoot from './assets/littleroot.mp3'
 
 
 const App = () => {
@@ -29,6 +31,9 @@ const App = () => {
   const [weight, setWeight] = useState("")
   //url for the sprite to display 
   const [gifName, setGifName] = useState("")
+  //play/pause music hook
+  const [isPlaying, setIsPlaying] = useState(false)
+  //URL for gif
   const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
   
   useEffect (() => {
@@ -130,8 +135,22 @@ const App = () => {
     }
   }
 
+  //play/pause function
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying)
+  }
+
   return (
     <AppWrapper>
+      <Sound
+        url={LittleRoot}
+        playStatus={
+          isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+        }
+        playFromPosition={0}
+        loop={true}
+        volume={10}
+      />
       <ContainerWrapper>
         <SearchBarWrapper>
           <form>
@@ -181,6 +200,7 @@ const App = () => {
           </ScrollWrapper>
         </AssetWrapper>
       </ContainerWrapper>
+      <button onClick={handlePlayPause}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
     </AppWrapper>
   )
 }

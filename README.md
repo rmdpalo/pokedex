@@ -3,7 +3,7 @@ A simple pokedex app that utilizes PokeAPI to allow users to search for pokemon 
 
 **Disclaimer**
 - Current app only works up to generation VII (i.e. id# 1-809), you can enter Pokémon names and id's after generation VII but it's not guaranteed to work with our app. 
-- Has issues rendering pokemon with multiple words (i.e. Type-null, Aegislash-shield, and any pokemon with male/female variants)
+- Has issues rendering pokemon with multiple words if you find any specific pokemon with sprites not working feel free to open an issue since they are very specific cases. (i.e. Type-null, Aegislash-shield, and any pokemon with male/female variants)
 ## Tech Stack:
 - React (both class and functional components)
 - PokeAPI

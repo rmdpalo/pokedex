@@ -29,7 +29,7 @@ const App = () => {
   const [weight, setWeight] = useState("")
   //url for the sprite to display 
   const [gifName, setGifName] = useState("")
-  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
+  const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
   
   useEffect (() => {
     console.log("hello")
@@ -52,6 +52,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
+
+    removeDash()
     
   }, [pokemonNum])
 
@@ -76,6 +78,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or # from 1-809"))
+
+    removeDash()
 
     e.preventDefault()
   }

@@ -1,18 +1,35 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react"
 import {
   AppWrapper,
   AssetWrapper,
   ContainerWrapper,
+  Display,
   DittoButton,
+  DittoImg,
   ScreenWrapper,
   SearchBar,
   SearchButton,
   SearchBarWrapper,
   ScrollUpButton,
   ScrollDownButton,
+  ScrollDivot,
+  ScrollIcon,
   ScrollWrapper,
-} from './App.modulecss'
+  Slits,
+  MagnifyingGlass,
+  OuterScreenWrapper,
+  PokedexDecor,
+  PokeInfo,
+  PokemonContainer,
+  PokemonLogo,
+  PowerButton,
+  VolumeSlits,
+} from "./App.modulecss"
 
+import scrollDown from "./assets/scroll_down.svg"
+import scrollUp from "./assets/scroll_up.svg"
+import pokemonLogo from "./assets/Pokémon_logo.svg"
+import ditto from "./assets/pixel-ditto.png"
 
 const App = () => {
   //pokemon in state
@@ -118,6 +135,7 @@ const App = () => {
 
   return (
     <AppWrapper>
+      <p>Disclaimer: Test</p>
       <ContainerWrapper>
         <SearchBarWrapper>
           <form>
@@ -128,42 +146,72 @@ const App = () => {
               onChange={handleChange}
             />
             <SearchButton 
-              type="submit"
               value="🔎"
               onClick={handleSubmit}
-            />
+            >
+              <MagnifyingGlass viewBox="0 0 417 417" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+                <path d="M286.6 340.204l61.912 61.912c13.008 13.009 34.131 13.009 47.14 0 13.009-13.008 13.009-34.131 0-47.14l-59.501-59.501c23.25-30.438 37.069-68.47 37.069-109.703 0-99.889-81.096-180.985-180.984-180.985S11.251 85.883 11.251 185.772c0 99.888 81.097 180.984 180.985 180.984 34.561 0 66.873-9.709 94.364-26.552zm-94.364-268.75c63.094 0 114.318 51.224 114.318 114.318 0 63.093-51.224 114.317-114.318 114.317S77.918 248.865 77.918 185.772c0-63.094 51.224-114.318 114.318-114.318z"/>
+              </MagnifyingGlass>
+            </SearchButton>
           </form>
         </SearchBarWrapper>
         <AssetWrapper>
           <DittoButton
             onClick={randomizePokemon}
-          >:)</DittoButton>
-          <ScreenWrapper>
-            {pokemonNum === "" ? (
-              <h1>Pokémon</h1>
-            ) : (
-              <div>
-                <h1>{pokemonNum} {capitalize(pokemon)}</h1>
-                <img src={gifURL} alt={`${pokemon} sprite`} />
-                <p>Height: {height/10} m</p>
-                <p>Weight: {weight/10} kg</p>
-                <p>{types.map(value => capitalize(value.type.name) + " ")}</p>
-              </div>
-            )}
-          </ScreenWrapper>
+          >
+            <DittoImg src={ditto} alt="pixel ditto pokemon" />
+          </DittoButton>
+          <OuterScreenWrapper>
+            <ScreenWrapper>
+              <Display>
+                {pokemonNum === "" ? (
+                  <PokemonLogo src={pokemonLogo} alt="pokemon logo" />
+                ) : (
+                  <div>
+                    <h1>{pokemonNum} {capitalize(pokemon)}</h1>
+                    <PokemonContainer>
+                      <img src={gifURL} alt={`${pokemon} sprite`} />
+                      <PokeInfo>
+                        <p>Height: {height/10} m</p>
+                        <p>Weight: {weight/10} kg</p>
+                        <p>{types.map(value => capitalize(value.type.name) + " ")}</p>
+                      </PokeInfo>
+                    </PokemonContainer>
+                  </div>
+                )}
+              </Display>
+              <PokedexDecor>
+                <PowerButton />
+                <VolumeSlits>
+                  <Slits />
+                  <Slits />
+                  <Slits />
+                  <Slits />
+                </VolumeSlits>
+              </PokedexDecor>
+            </ScreenWrapper>
+          </OuterScreenWrapper>
           <ScrollWrapper>
+            <ScrollIcon src={scrollUp} alt="" />
             <ScrollUpButton
               value="-"
               onClick={handleScrollClick}
             >
-              {/* svg placeholder */}
+              <ScrollDivot />
+              <ScrollDivot />
+              <ScrollDivot />
+              <ScrollDivot />
             </ScrollUpButton>
             <ScrollDownButton
               value="+"
               onClick={handleScrollClick}
             >
-              {/* svg placeholder */}
+              <ScrollDivot />
+              <ScrollDivot />
+              <ScrollDivot />
+              <ScrollDivot />
             </ScrollDownButton>
+            <ScrollIcon src={scrollDown} alt=""/>
           </ScrollWrapper>
         </AssetWrapper>
       </ContainerWrapper>

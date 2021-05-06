@@ -6,6 +6,7 @@ import {
   Display,
   DittoButton,
   DittoImg,
+  GlobalStyle,
   ScreenWrapper,
   SearchBar,
   SearchButton,
@@ -164,6 +165,7 @@ const App = () => {
 
   return (
     <AppWrapper>
+      <GlobalStyle />
       <Sound
         url={LittleRoot}
         playStatus={
@@ -172,12 +174,13 @@ const App = () => {
         loop={true}
         volume={10}
       />
+      <h1>Pokédex</h1>
       <ContainerWrapper>
         <SearchBarWrapper>
           <form>
             <SearchBar 
               type="text"
-              placeholder="Please enter a Pokémon # or name"
+              placeholder="Enter a Poké name or #."
               value={search}
               onChange={handleChange}
             />
@@ -204,7 +207,7 @@ const App = () => {
                   <PokemonLogo src={pokemonLogo} alt="pokemon logo" />
                 ) : (
                   <div>
-                    <h1>{pokemonNum} {capitalize(pokemon)}</h1>
+                    <h2><span>no.</span>{pokemonNum} {capitalize(pokemon)}</h2>
                     <PokemonContainer>
                       <img src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
                       <PokeInfo>

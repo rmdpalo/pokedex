@@ -24,8 +24,9 @@ import {
   PokemonLogo,
   PowerButton,
   VolumeSlits,
-} from "./App.modulecss"
-
+} from './App.modulecss'
+import Sound from 'react-sound'
+import LittleRoot from './assets/littleroot.mp3'
 import scrollDown from "./assets/scroll_down.svg"
 import scrollUp from "./assets/scroll_up.svg"
 import pokemonLogo from "./assets/Pokémon_logo.svg"
@@ -45,7 +46,11 @@ const App = () => {
   //pokemon weight
   const [weight, setWeight] = useState("")
   //url for the sprite to display 
-  const gifURL = `https://projectpokemon.org/images/normal-sprite/${pokemon}.gif`
+  const [gifName, setGifName] = useState("")
+  //play/pause music hook
+  const [isPlaying, setIsPlaying] = useState(false)
+  //URL for gif
+  const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
   
   useEffect (() => {
     console.log("hello")
@@ -68,6 +73,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
+
+    removeDash()
     
   }, [pokemonNum])
 
@@ -92,6 +99,8 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or # from 1-809"))
+
+    removeDash()
 
     e.preventDefault()
   }
@@ -133,9 +142,32 @@ const App = () => {
     return capitalizedStr
   }
 
+  //TODO: does not work with pokemon #772 "type-null"
+  const removeDash = () => {
+    if(pokemon.includes("-")){
+      setGifName(pokemon.split("-").join("")) 
+    } else {
+      setGifName(pokemon)
+    }
+  }
+
+  //play/pause function
+  const handlePlayPause = () => {
+    setIsPlaying(!isPlaying)
+  }
+
   return (
     <AppWrapper>
       <p>Disclaimer: Test</p>
+      <Sound
+        url={LittleRoot}
+        playStatus={
+          isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
+        }
+        playFromPosition={0}
+        loop={true}
+        volume={10}
+      />
       <ContainerWrapper>
         <SearchBarWrapper>
           <form>
@@ -215,6 +247,7 @@ const App = () => {
           </ScrollWrapper>
         </AssetWrapper>
       </ContainerWrapper>
+      <button onClick={handlePlayPause}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
     </AppWrapper>
   )
 }

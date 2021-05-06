@@ -1,6 +1,37 @@
 import styled from "styled-components"
+import { createGlobalStyle } from "styled-components"
 import background from "./assets/pokemon_background.png"
+import Silkscreen from "./fonts/silkscreen/slkscr.ttf"
+import SilkscreenBold from "./fonts/silkscreen/slkscrb.ttf"
 import wave from "./assets/wave.svg"
+
+export const GlobalStyle = createGlobalStyle`
+  @font-face {
+    font-family: 'Silkscreen';
+    src: url(${Silkscreen}) format('truetype');
+    font-style: normal;
+    font-display: auto;
+  }
+
+  @font-face {
+    font-family: 'SilkscreenBold';
+    src: url(${SilkscreenBold}) format('truetype');
+    font-style: normal;
+    font-display: auto;
+  }
+  
+  * {
+    font-family: 'Silkscreen';
+  }
+
+  h1, h2 {
+    font-family: 'SilkscreenBold';
+  }
+
+  span {
+    font-size: 16px;
+  }
+  `
 
 export const AppWrapper = styled.div`
   display: flex;

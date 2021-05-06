@@ -207,3 +207,16 @@ export const PokemonContainer = styled.div`
 export const PokeInfo = styled.div`
   font-size: 16px;
 `
+
+export const MusicButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px; 
+  width: 75px; 
+  height: 1.5rem; 
+  border: 10px solid black; 
+  border-radius: 20px;
+  padding: 5px;
+  background-color: beige;
+`

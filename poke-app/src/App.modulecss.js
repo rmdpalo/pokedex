@@ -84,6 +84,7 @@ export const SearchButton = styled.button`
   width: 65px;
   height: 65px;
   margin: 0px 5px;
+  cursor: pointer;
 `
 
 export const SearchBarWrapper = styled.div`
@@ -113,6 +114,7 @@ export const ScrollUpButton = styled.button`
   border-bottom: none;
   border-radius: 40px 40px 0 0;
   background-color: #ffca62;
+  cursor: pointer;
 `
 
 export const ScrollDownButton = styled.button`
@@ -122,11 +124,13 @@ export const ScrollDownButton = styled.button`
   border-top: none;
   border-radius: 0 0 40px 40px;
   background-color: #ffca62;
+  cursor: pointer;
 `
 
 export const DittoButton = styled.button`
   background-color: transparent;
   border: none;
+  cursor: pointer;
   align-self: flex-end;
 `
 

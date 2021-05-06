@@ -45,12 +45,9 @@ const App = () => {
   const [height, setHeight] = useState("")
   //pokemon weight
   const [weight, setWeight] = useState("")
-  //url for the sprite to display 
-  const [gifName, setGifName] = useState("")
   //play/pause music hook
   const [isPlaying, setIsPlaying] = useState(false)
-  //URL for gif
-  const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
+
   
   useEffect (() => {
     console.log("hello")
@@ -73,8 +70,6 @@ const App = () => {
       setWeight(data.weight)
     })
     .catch(() => alert("Please enter a valid pokemon name or #"))
-
-    removeDash()
     
   }, [pokemonNum])
 
@@ -100,8 +95,6 @@ const App = () => {
     })
     .catch(() => alert("Please enter a valid pokemon name or # from 1-809"))
 
-    removeDash()
-
     e.preventDefault()
   }
 
@@ -112,6 +105,10 @@ const App = () => {
 
   //NOTE: looping does not work unless setPokemonNum is set to type integer
   const handleScrollClick = (e) => {
+    //if nothing has been searched yet stop the scroll buttons.
+    if (pokemonNum === ""){
+      return;
+    }
     //if on lower bound, go to the last pokemon
     if (pokemonNum === 1 && e.target.value === "-") {
       setPokemonNum(809)
@@ -142,23 +139,30 @@ const App = () => {
     return capitalizedStr
   }
 
-  //TODO: does not work with pokemon #772 "type-null"
-  const removeDash = () => {
-    if(pokemon.includes("-")){
-      setGifName(pokemon.split("-").join("")) 
-    } else {
-      setGifName(pokemon)
-    }
-  }
-
   //play/pause function
   const handlePlayPause = () => {
     setIsPlaying(!isPlaying)
   }
 
+  const gifHandler = (str) => {
+    //URL for gif
+    //url for the sprite to display 
+    const gifName = removeDash(str)
+    const gifURL = `https://projectpokemon.org/images/normal-sprite/${gifName}.gif`
+    return gifURL
+  }
+
+  //TODO: does not work with pokemon #772 "type-null"
+  const removeDash = (str) => {
+    if(str.includes("-")){
+      return str.split("-").join("")
+    } else {
+      return str
+    }
+  }
+
   return (
     <AppWrapper>
-      <p>Disclaimer: Test</p>
       <Sound
         url={LittleRoot}
         playStatus={
@@ -202,7 +206,7 @@ const App = () => {
                   <div>
                     <h1>{pokemonNum} {capitalize(pokemon)}</h1>
                     <PokemonContainer>
-                      <img src={gifURL} alt={`${pokemon} sprite`} />
+                      <img src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
                       <PokeInfo>
                         <p>Height: {height/10} m</p>
                         <p>Weight: {weight/10} kg</p>
@@ -247,7 +251,7 @@ const App = () => {
           </ScrollWrapper>
         </AssetWrapper>
       </ContainerWrapper>
-      <button onClick={handlePlayPause}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button>
+      {/* <button onClick={handlePlayPause}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button> */}
     </AppWrapper>
   )
 }

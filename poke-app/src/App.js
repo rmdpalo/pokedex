@@ -17,6 +17,7 @@ import {
   ScrollWrapper,
   Slits,
   MagnifyingGlass,
+  MusicButton,
   OuterScreenWrapper,
   PokedexDecor,
   PokeInfo,
@@ -168,7 +169,6 @@ const App = () => {
         playStatus={
           isPlaying ? Sound.status.PLAYING : Sound.status.STOPPED
         }
-        playFromPosition={0}
         loop={true}
         volume={10}
       />
@@ -251,7 +251,9 @@ const App = () => {
           </ScrollWrapper>
         </AssetWrapper>
       </ContainerWrapper>
-      {/* <button onClick={handlePlayPause}>{!isPlaying ? 'Play Music' : 'Stop Music'}</button> */}
+      <MusicButton onClick={handlePlayPause}>
+        {!isPlaying ? 'Play Music' : 'Stop Music'}
+      </MusicButton>
     </AppWrapper>
   )
 }

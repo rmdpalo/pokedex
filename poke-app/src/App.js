@@ -207,9 +207,9 @@ const App = () => {
                   <PokemonLogo src={pokemonLogo} alt="pokemon logo" />
                 ) : (
                   <div>
-                    <h2><span>no.</span>{pokemonNum} {capitalize(pokemon)}</h2>
+                    <h2><span>no.</span>{pokemonNum}<br/>{capitalize(pokemon)}</h2>
                     <PokemonContainer>
-                      <img src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
+                      <img style={{maxWidth: "120px", maxHeight: "60px"}} src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
                       <PokeInfo>
                         <p>Height: {height/10} m</p>
                         <p>Weight: {weight/10} kg</p>

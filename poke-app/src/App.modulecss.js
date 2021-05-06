@@ -249,7 +249,6 @@ export const MusicButton = styled.div`
   align-items: center;
   justify-content: center;
   margin: 10px; 
-  width: 75px; 
   height: 1.5rem; 
   border: 10px solid black; 
   border-radius: 20px;

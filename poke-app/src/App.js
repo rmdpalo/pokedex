@@ -254,6 +254,10 @@ const App = () => {
       <MusicButton onClick={handlePlayPause}>
         {!isPlaying ? 'Play Music' : 'Stop Music'}
       </MusicButton>
+      <footer style={{
+        position: "absolute",
+        bottom: "0"
+      }}>Developed by <a href="https://bndiep.github.io/portfolio/" target="_blank">Bach</a> and <a href="https://github.com/rmdpalo" target="_blank">Miguel</a>.</footer>
     </AppWrapper>
   )
 }

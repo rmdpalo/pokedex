@@ -24,6 +24,8 @@ import {
   PokeInfo,
   PokemonContainer,
   PokemonLogo,
+  PokemonNameNo,
+  PokemonSprite,
   PowerButton,
   VolumeSlits,
 } from './App.modulecss'
@@ -177,22 +179,20 @@ const App = () => {
       <h1>Pokédex</h1>
       <ContainerWrapper>
         <SearchBarWrapper>
-          <form>
-            <SearchBar 
-              type="text"
-              placeholder="Enter a Poké name or #."
-              value={search}
-              onChange={handleChange}
-            />
-            <SearchButton 
-              value="🔎"
-              onClick={handleSubmit}
-            >
-              <MagnifyingGlass viewBox="0 0 417 417" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
-                <path d="M286.6 340.204l61.912 61.912c13.008 13.009 34.131 13.009 47.14 0 13.009-13.008 13.009-34.131 0-47.14l-59.501-59.501c23.25-30.438 37.069-68.47 37.069-109.703 0-99.889-81.096-180.985-180.984-180.985S11.251 85.883 11.251 185.772c0 99.888 81.097 180.984 180.985 180.984 34.561 0 66.873-9.709 94.364-26.552zm-94.364-268.75c63.094 0 114.318 51.224 114.318 114.318 0 63.093-51.224 114.317-114.318 114.317S77.918 248.865 77.918 185.772c0-63.094 51.224-114.318 114.318-114.318z"/>
-              </MagnifyingGlass>
-            </SearchButton>
-          </form>
+          <SearchBar 
+            type="text"
+            placeholder="Enter a Poké name or #."
+            value={search}
+            onChange={handleChange}
+          />
+          <SearchButton 
+            value="🔎"
+            onClick={handleSubmit}
+          >
+            <MagnifyingGlass viewBox="0 0 417 417" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
+              <path d="M286.6 340.204l61.912 61.912c13.008 13.009 34.131 13.009 47.14 0 13.009-13.008 13.009-34.131 0-47.14l-59.501-59.501c23.25-30.438 37.069-68.47 37.069-109.703 0-99.889-81.096-180.985-180.984-180.985S11.251 85.883 11.251 185.772c0 99.888 81.097 180.984 180.985 180.984 34.561 0 66.873-9.709 94.364-26.552zm-94.364-268.75c63.094 0 114.318 51.224 114.318 114.318 0 63.093-51.224 114.317-114.318 114.317S77.918 248.865 77.918 185.772c0-63.094 51.224-114.318 114.318-114.318z"/>
+            </MagnifyingGlass>
+          </SearchButton>
         </SearchBarWrapper>
         <AssetWrapper>
           <DittoButton
@@ -207,12 +207,12 @@ const App = () => {
                   <PokemonLogo src={pokemonLogo} alt="pokemon logo" />
                 ) : (
                   <div>
-                    <h2><span>no.</span>{pokemonNum} {capitalize(pokemon)}</h2>
+                    <PokemonNameNo><span>no.</span>{pokemonNum}<br/>{capitalize(pokemon)}</PokemonNameNo>
                     <PokemonContainer>
-                      <img src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
+                      <PokemonSprite src={gifHandler(pokemon)} alt={`${pokemon} sprite`} />
                       <PokeInfo>
-                        <p>Height: {height/10} m</p>
-                        <p>Weight: {weight/10} kg</p>
+                        <p><b>Height:</b> {height/10} m</p>
+                        <p><b>Weight:</b> {weight/10} kg</p>
                         <p>{types.map(value => capitalize(value.type.name) + " ")}</p>
                       </PokeInfo>
                     </PokemonContainer>

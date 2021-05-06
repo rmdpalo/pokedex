@@ -22,6 +22,8 @@ export const GlobalStyle = createGlobalStyle`
   
   * {
     font-family: 'Silkscreen';
+    margin: 0;
+    padding: 0;
   }
 
   h1, h2 {
@@ -49,8 +51,8 @@ export const AppWrapper = styled.div`
 `
 
 export const ContainerWrapper = styled.div`
-  min-width: 700px;
-  min-height: 500px;
+  min-width: 750px;
+  min-height: 550px;
   background-color: #E74D55;
   display: flex;
   justify-content: center;
@@ -61,8 +63,8 @@ export const ContainerWrapper = styled.div`
 `
 
 export const OuterScreenWrapper = styled.div`
-  min-width: 450px;
-  min-height: 380px;
+  min-width: 460px;
+  min-height: 400px;
   background-color: #707070;
   border-radius: 20px;
   display: flex;
@@ -72,8 +74,8 @@ export const OuterScreenWrapper = styled.div`
 `
 
 export const ScreenWrapper = styled.div`
-  min-width: 430px;
-  min-height: 360px;
+  min-width: 440px;
+  min-height: 380px;
   background-color: #E5E5E5;
   border-radius: 15px;
   display: flex;
@@ -84,16 +86,16 @@ export const ScreenWrapper = styled.div`
 `
 
 export const Display = styled.div`
-  min-width: 380px;
+  min-width: 400px;
   min-height: 240px;
   background: white url(${wave}) no-repeat;
-  background-size: auto 150px;
+  background-size: auto 175px;
   border: 8px solid #AFAFAF;
   border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+  margin-top: 10px;
 `
 
 export const SearchBar = styled.input`
@@ -103,8 +105,8 @@ export const SearchBar = styled.input`
   color: #1d601c;
   width: 300px;
   height: 2rem;
-  margin: 0px 10px;
-  padding-left: 10px;
+  padding-left: 20px;
+  margin-right: 15px;
   font-size: 16px;
 `
 export const SearchButton = styled.button`
@@ -114,15 +116,14 @@ export const SearchButton = styled.button`
   color: #0d6eff;
   width: 65px;
   height: 65px;
-  margin: 0px 5px;
   cursor: pointer;
 `
 
-export const SearchBarWrapper = styled.div`
+export const SearchBarWrapper = styled.form`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
 `
 
 export const AssetWrapper = styled.div`
@@ -139,7 +140,7 @@ export const ScrollWrapper = styled.div`
 `
 
 export const ScrollUpButton = styled.button`
-  height: 110px;
+  height: 120px;
   width: 60px;
   border: 10px solid #707070;
   border-bottom: none;
@@ -149,7 +150,7 @@ export const ScrollUpButton = styled.button`
 `
 
 export const ScrollDownButton = styled.button`
-  height: 110px;
+  height: 120px;
   width: 60px;
   border: 10px solid #707070;
   border-top: none;
@@ -162,7 +163,7 @@ export const DittoButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
-  align-self: flex-end;
+  align-self: center;
 `
 
 export const DittoImg = styled.img`
@@ -184,7 +185,7 @@ export const PokedexDecor = styled.div`
   align-items: center;
   height: 50px;
   width: 350px;
-  padding: 20px;
+  padding: 30px;
 `
 
 export const PowerButton = styled.div`
@@ -197,7 +198,7 @@ export const PowerButton = styled.div`
 `
 
 export const VolumeSlits = styled.div`
-  padding: 10px 0;
+  padding-top: 4px;
 `
 
 export const Slits = styled.div`
@@ -220,7 +221,7 @@ export const PokemonLogo = styled.img`
 `
 
 export const ScrollDivot = styled.div`
-  margin: 10px 0px 10px -1px;
+  margin: 10px 5px;
   width: 30px;
   height: 8px;
   background-color: #BE933F;
@@ -230,13 +231,17 @@ export const ScrollDivot = styled.div`
 export const PokemonContainer = styled.div`
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  width: 250px;
+  width: 394px;
 `
 
 export const PokeInfo = styled.div`
+  display: flex;
+  flex-direction: column;
   font-size: 16px;
+  text-align: end;
+  padding-top: 60px;
 `
 
 export const MusicButton = styled.div`
@@ -250,4 +255,14 @@ export const MusicButton = styled.div`
   border-radius: 20px;
   padding: 5px;
   background-color: beige;
+`
+
+export const PokemonSprite = styled.img`
+  width: 175px;
+  max-height: 164px;
+`
+
+export const PokemonNameNo = styled.h2`
+  text-align: right;
+  padding-right: 20px;
 `

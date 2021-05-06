@@ -163,7 +163,6 @@ const App = () => {
 
   return (
     <AppWrapper>
-      {/* <p>Disclaimer: Test</p> */}
       <Sound
         url={LittleRoot}
         playStatus={
